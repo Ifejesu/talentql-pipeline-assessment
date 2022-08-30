@@ -1,5 +1,5 @@
-const express = require('express');
-const rateLimit = require('express-rate-limit');
+const express = require("express");
+const rateLimit = require("express-rate-limit");
 const app = express();
 
 const  error = (status, msg) => {
@@ -21,18 +21,18 @@ const limiter = rateLimit({
 
 //This endpoint receives the dob parameter and calculates the age
 app.get('/howold', limiter, (req, res, next) => {
-    dob = req.query.dob;
+    let dob = req.query.dob;
 
     if (!dob) return next(error(400, 'Date of birth (dob) query parameter required'));
 
     if (isNaN(new Date(dob).getFullYear())) return next(error(401, 'Date of birth (dob) should be a timestamp e.g YYYY/MM/DD or YYYY-MM-DD recommended'));
 
     else {
-        today = new Date();
-        birthDate = new Date(dob);
-        yearOfBirth = birthDate.getFullYear();
-        currentYear = today.getFullYear();
-        age = currentYear - yearOfBirth;
+        let today = new Date(),
+        birthDate = new Date(dob),
+        yearOfBirth = birthDate.getFullYear(),
+        currentYear = today.getFullYear(),
+        age = currentYear - yearOfBirth,
         m = today.getMonth() - birthDate.getMonth();
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
         res.status(200).send({ age: age });
