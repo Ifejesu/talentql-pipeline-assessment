@@ -1,5 +1,7 @@
 # Backend Assessment
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1066d745a6bb4baba20c137848610517)](https://app.codacy.com/gh/Ifejesu/talentql-pipeline-assessment?utm_source=github.com&utm_medium=referral&utm_content=Ifejesu/talentql-pipeline-assessment&utm_campaign=Badge_Grade_Settings)
+
 Build and deploy a very simple API that does the following
 
 1.  Calculate and return the age of a person, given their date of birth (dob) as query parameters to `GET /howold`
