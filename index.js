@@ -28,8 +28,10 @@ app.get('/howold', limiter, (req, res, next) => {
     if (isNaN(new Date(dob).getFullYear())) return next(error(401, 'Date of birth (dob) should be a timestamp e.g YYYY/MM/DD or YYYY-MM-DD recommended'));
 
     else {
-        yearOfBirth = new Date(dob).getFullYear();
-        currentYear = new Date().getFullYear();
+        today = new Date();
+        birthDate = new Date(dob);
+        yearOfBirth = birthDate.getFullYear();
+        currentYear = today.getFullYear();
         age = currentYear - yearOfBirth;
         m = today.getMonth() - birthDate.getMonth();
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
